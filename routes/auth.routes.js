@@ -24,7 +24,7 @@ router.post("/signup", async (req, res) => {
     payload.passwordHash = bcrypt.hashSync(req.body.password, salt)
 
     try {
-        const newUser = User.create(payload)
+        const newUser = await User.create(payload)
         res.redirect("/")
     } catch (error) {
         console.log(error);
